@@ -20,7 +20,11 @@ const TodoItem = ({
                     defaultChecked={completed}
                     onClick={() => onCheckTodo(id)}
                 />
-                {completed ? <s>{title}</s> : <p className='mb-0'>{title}</p>}
+                {completed ? (
+                    <s className='title'>{title}</s>
+                ) : (
+                    <p className='mb-0 title'>{title}</p>
+                )}
             </div>
 
             <div className='d-flex'>

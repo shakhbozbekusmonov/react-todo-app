@@ -3,7 +3,23 @@ import { TodoForm, TodoFilter, TodoList } from "./components";
 
 const Todos = () => {
     const [todos, setTodos] = useState(
-        JSON.parse(localStorage.getItem("todos")) || []
+        JSON.parse(localStorage.getItem("todos")) || [
+            {
+                id: 1,
+                title: "LeetCode masala ishlashim kerak.",
+                completed: false,
+            },
+            {
+                id: 2,
+                title: "Ingiliz tilidan listening qilishim kerak.",
+                completed: false,
+            },
+            {
+                id: 3,
+                title: "Newcastlega IT kursga borishim kerak.",
+                completed: false,
+            },
+        ]
     );
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [selectedType, setSelectedType] = useState("all"); // the state three values all, completed, uncompleted
@@ -52,7 +68,7 @@ const Todos = () => {
     return (
         <div className='container'>
             <div className='row'>
-                <div className='col-8 offset-2 my-3'>
+                <div className='col-12 col-md-12 col-lg-8 offset-lg-2 my-3'>
                     <TodoForm
                         addTodo={(todo) => addOrUpdateTodo(todo)}
                         todos={todos}
@@ -64,7 +80,7 @@ const Todos = () => {
                         onSelectType={(type) => setSelectedType(type)}
                     />
                 </div>
-                <div className='col-8 offset-2'>
+                <div className='col-12 col-md-12 col-lg-8 offset-lg-2'>
                     <TodoList
                         todos={visibleTodos}
                         onCheckTodo={(id) => toggleTodoCompletion(id)}
